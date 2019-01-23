@@ -88,7 +88,7 @@
                     &= 2\\
             \end{alignat*}
 
-   \item     \item To Prove: $exp\:\bar{2}\:\bar{3} = \bar{8}$\\
+\item To Prove: $exp\:\bar{2}\:\bar{3} = \bar{8}$\\
    \textbf{Notation}: $f^n x$ or $f^n(x)$  denotes $n$ applications of $f$ on $x$.\\
           \textbf{Proof}:  \begin{alignat*}{4}
     exp\:\bar{2}\:\bar{3} &= (\lambda mnfx.nm f x)\bar{2}\:\bar{3}\\
@@ -119,6 +119,25 @@
 &= \lambda fx.  f^8 x\\
 &= \bar{8}\\
             \end{alignat*} 
+    \item 
+          \textbf{Solution}:  \begin{alignat*}{5}
+                add\:\bar{7}\:\bar{1}  &= (\lambda n.\lambda m.\lambda f.\lambda x. n f (m f x))(\lambda f.\lambda x. f^7 x)(\lambda f.\lambda x. f x)\\
+              &= \lambda f.\lambda x. (\lambda f.\lambda x. f^7 x) f ((\lambda f.\lambda x. f x)f x)\\
+            &= \lambda f.\lambda x. (\lambda s.\lambda z. s^7 z) f ((\lambda f.\lambda x. f x)f x)\\
+            &= \lambda f.\lambda x. (\lambda z. f^7 z)((\lambda g.\lambda y. g y)f x)\\
+            &= \lambda f.\lambda x. (\lambda z. f^7 z)(f x)\\
+            &= \lambda f.\lambda x. ( f^7 (f x))\\
+            &= \lambda f.\lambda x. ( f^8 x)\\
+                    &= \bar{8}\\
+            \end{alignat*}
+            
+    \item To Prove: IF FALSE THEN x ELSE y = y\\
+    \textbf{Proof}:  \begin{alignat*}{6}
+    IF\:FALSE\:THEN\:x\:ELSE\:y &= FALSE\:x\:y  \\
+    &= (\lambda x. \lambda y. y) x y\\
+    &= ( \lambda y. y) y\\
+    &= y\\
+    \end{alignat*}
 \end{enumerate}
 \end{enumerate}
 
