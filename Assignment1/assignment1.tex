@@ -13,7 +13,7 @@
 
 % ========== Edit your name here
 \author{Arkajyoti Pal}
-\title{Principles of Programming Languages: CS40032}
+\title{Principles of Programming Languages: CS40032 \\ Assignment-I: \textit{$\lambda$ Calculus}}
 \maketitle
 
 \medskip
@@ -46,7 +46,8 @@
                 &= (((\lambda y.false) true) false)true \\
                 &= ((false) false) true \\
                 &= ((\lambda x.\lambda y.y) false) true\\
-                &= (\lambda y.y) true = true 
+                &= (\lambda y.y) true \\
+                &= true 
                 \end{alignat*}
     \item To Prove: or false true= true.\\
           \textbf{Proof}:  \begin{alignat*}{2}
@@ -57,12 +58,12 @@
                     &= (\lambda y.y) true\\
                     &= true\\
             \end{alignat*}
-    \item To Prove: SUCC \Bar{2}=\Bar{3}.\\
+    \item To Prove: $SUCC\:\Bar{2}=\Bar{3}.$\\
           \textbf{Proof}:  \begin{alignat*}{3}
                 SUCC\:2  &= (\lambda z. \lambda f. \lambda y. f (z f y))(\lambda f. \lambda y. f (f y))\\
                         &=  \lambda f. \lambda y. f ( (\lambda f. \lambda y. f (f y)) f y)\\
                         &= \lambda f. \lambda y. f ( f(f(y)))\\
-                    &= 3\\
+                    &= \bar{3}\\
             \end{alignat*}
     \item To Prove: (Y FACT) 2 = 2\\
     Call FACT as F.\\ $F= \lambda f. \lambda n.\:IF\:n = 0\:THEN\:1\:ELSE\:n\star
@@ -87,9 +88,11 @@
         &= 2\star(1) \\
                     &= 2\\
             \end{alignat*}
+\pagebreak
+\Large{   \textbf{Notation}: $f^n x$ or $f^n(x)$  denotes $n$ applications of $f$ on $x$.}\\
 
 \item To Prove: $exp\:\bar{2}\:\bar{3} = \bar{8}$\\
-   \textbf{Notation}: $f^n x$ or $f^n(x)$  denotes $n$ applications of $f$ on $x$.\\
+
           \textbf{Proof}:  \begin{alignat*}{4}
     exp\:\bar{2}\:\bar{3} &= (\lambda mnfx.nm f x)\bar{2}\:\bar{3}\\
     &= \lambda fx. (\lambda fx.f^3 x) (\lambda fx. f^2 x) fx\\
@@ -161,13 +164,36 @@
     &= \lambda f.\lambda x. ( f^{(n+m)} x)\\
     &= \lambda f.\lambda x. ( f^{(m+n)} x)\\
                     &= \overline{(m+n)}\\
+    &= add\:\bar{m}\:\bar{n}\\
     \end{alignat*}
-    
+ Hence, as we can see, $add\: \bar{m} \: \bar{n}=add\:\bar{n} \: \bar{m}$, and therefore add is commutative.  \\ 
 \textbf{Proof-II}: Secondly, we show that \textit{mul}  is commutative, i.e.,$mul\: \bar{m} \: \bar{n}=mul\:\bar{n} \: \bar{m}$ \\
     \begin{alignat*}{7}
-    mul\:\bar{m}\:\bar{n}  &= \\
+    mul\:\bar{m}\:\bar{n}  &= \lambda szfx.( s(zf) x)\bar{m}\:\bar{n}\\
+    &= \lambda fx.( \bar{m} (\bar{n}f) x) \\
+    &= \lambda fx.( (\lambda f.\lambda x. f^m x) ((\lambda f.\lambda x. f^n x) f) x) \\
+    &= \lambda fx.( (\lambda f.\lambda x. f^m x) (\lambda x. f^n x ) x) \\
+    &= \lambda fx. (\lambda x. (\lambda x. f^n x )^m x)  x\\
+    &= \lambda fx. (\lambda x.   \underbrace{(\lambda x. f^n x )( (\lambda x. f^n x ) (.... ((\lambda x. f^n x )}_\text{expanded m times}x))....)    )  x\\
+    &= \lambda fx. (\lambda x. \underbrace{f^n(f^n(f^n}_\text{m times}....)..) x)  x\\
+    &= \lambda fx. (\lambda x. f^{(m\star n)} x)  x\\
     &= \overline{(m\star n)}\\
     \end{alignat*}
+    
+    \begin{alignat*}{7}
+    mul\:\bar{n}\:\bar{m}  &= \lambda szfx.( s(zf) x)\bar{n}\:\bar{m}\\
+    &= \lambda fx.( \bar{n} (\bar{m}f) x) \\
+    &= \lambda fx.( (\lambda f.\lambda x. f^n x) ((\lambda f.\lambda x. f^m x) f) x) \\
+    &= \lambda fx.( (\lambda f.\lambda x. f^n x) (\lambda x. f^m x ) x) \\
+    &= \lambda fx. (\lambda x. (\lambda x. f^m x )^n x)  x\\
+    &= \lambda fx. (\lambda x.   \underbrace{(\lambda x. f^m x )( (\lambda x. f^m x ) (.... ((\lambda x. f^m x )}_\text{expanded n times}x))....)    )  x\\
+    &= \lambda fx. (\lambda x. \underbrace{f^m(f^m(f^m}_\text{n times}....)..) x)  x\\
+    &= \lambda fx. (\lambda x. f^{(n\star m)} x)  x\\
+    &= \lambda fx. (\lambda x. f^{(m\star n)} x)  x\\
+    &= \overline{(m\star n)}\\
+    &= mul\: \bar{m} \: \bar{n}\\
+    \end{alignat*}
+Hence, as we can see, $mul\: \bar{m} \: \bar{n}=mul\:\bar{n} \: \bar{m}$, and therefore mul is commutative.
 
 \end{enumerate}
 \end{enumerate}
