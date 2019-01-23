@@ -57,7 +57,7 @@
                     &= (\lambda y.y) true\\
                     &= true\\
             \end{alignat*}
-    \item To Prove: SUCC 2=3.\\
+    \item To Prove: SUCC \Bar{2}=\Bar{3}.\\
           \textbf{Proof}:  \begin{alignat*}{3}
                 SUCC\:2  &= (\lambda z. \lambda f. \lambda y. f (z f y))(\lambda f. \lambda y. f (f y))\\
                         &=  \lambda f. \lambda y. f ( (\lambda f. \lambda y. f (f y)) f y)\\
@@ -138,54 +138,41 @@
     &= ( \lambda y. y) y\\
     &= y\\
     \end{alignat*}
-\end{enumerate}
-\end{enumerate}
-
-
-
-
-\begin{enumerate}
-
-\item
-Answer to question 1:
-
-% ========== Just examples, please delete before submitting
-Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations
-\begin{equation}
-    a^2 + b^2 = c^2.
-\end{equation}
-
-Some people like to write scalars without boldface $x+y=1$ and vectors or matrices in boldface
-\begin{equation}
-    \mathbf{A} \mathbf{x} = \mathbf{b}.
-\end{equation}
-
-An example of a matrix \LaTeX:
-\begin{equation}
-    \mathbf{A} = \left(
-    \begin{array}{ccc}
-    3 & -1 & 2 \\ 	
-    0 & 1 & 2 \\ 
-    1 & 0 & -1 \\
-\end{array} 
-\right).  
-\end{equation}
-
-With a labeled equation such as the following:
-\begin{equation}
-    \label{accel}
-    \frac{d^2 x}{d t^2} = a
-\end{equation}
-you can referrer to the equation later. In equation \ref{accel} we defined acceleration.
-% ========== END examples
-
-
-\item
-Answer to question 2
-
-% ========== Continue adding items as needed
+    
+        \item To Prove: \textit{add} and \textit{mul} are commutative\\
+    \textbf{Proof-I}: First we show that \textit{add}  is commutative, i.e., $add\: \bar{m} \: \bar{n}=add\:\bar{n} \: \bar{m}$ \\
+    \begin{alignat*}{7}
+    add\:\bar{m}\:\bar{n}  &= (\lambda s.\lambda z.\lambda f.\lambda x. s f (z f x))(\lambda f.\lambda x. f^m x)(\lambda f.\lambda x. f^n x)\\
+     &= \lambda f.\lambda x. (\lambda f.\lambda x. f^m x) f ((\lambda f.\lambda x. f^n x)f x)\\
+    &= \lambda f.\lambda x. (\lambda s.\lambda z. s^m z) f ((\lambda f.\lambda x. f^n x)f x)\\
+    &= \lambda f.\lambda x. (\lambda z. f^m z)((\lambda g.\lambda y. g^n y)f x)\\
+    &= \lambda f.\lambda x. (\lambda z. f^m z)(f^n x)\\
+    &= \lambda f.\lambda x. ( f^m (f^n x))\\
+    &= \lambda f.\lambda x. ( f^{(m+n)} x)\\
+                    &= \overline{(m+n)}\\
+    \end{alignat*}
+        \begin{alignat*}{7}
+    add\:\bar{n}\:\bar{m}  &= (\lambda s.\lambda z.\lambda f.\lambda x. s f (z f x))(\lambda f.\lambda x. f^n x)(\lambda f.\lambda x. f^m x)\\
+     &= \lambda f.\lambda x. (\lambda f.\lambda x. f^n x) f ((\lambda f.\lambda x. f^m x)f x)\\
+    &= \lambda f.\lambda x. (\lambda s.\lambda z. s^n z) f ((\lambda f.\lambda x. f^m x)f x)\\
+    &= \lambda f.\lambda x. (\lambda z. f^n z)((\lambda g.\lambda y. g^m y)f x)\\
+    &= \lambda f.\lambda x. (\lambda z. f^n z)(f^m x)\\
+    &= \lambda f.\lambda x. ( f^n (f^m x))\\
+    &= \lambda f.\lambda x. ( f^{(n+m)} x)\\
+    &= \lambda f.\lambda x. ( f^{(m+n)} x)\\
+                    &= \overline{(m+n)}\\
+    \end{alignat*}
+    
+\textbf{Proof-II}: Secondly, we show that \textit{mul}  is commutative, i.e.,$mul\: \bar{m} \: \bar{n}=mul\:\bar{n} \: \bar{m}$ \\
+    \begin{alignat*}{7}
+    mul\:\bar{m}\:\bar{n}  &= \\
+    &= \overline{(m\star n)}\\
+    \end{alignat*}
 
 \end{enumerate}
+\end{enumerate}
+
+
 
 \end{document}
 \grid
