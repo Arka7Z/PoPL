@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\begin{document}
+
+% ========== Edit your name here
+\author{Arkajyoti Pal}
+\title{Principles of Programming Languages: CS40032 \\ Assignment-III: \textit{$\lambda$ and Functors in C++}}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+
+\lstset{language=C++,                   directivestyle={\color{black}},                   emph={int,char,double,float,unsigned,auto},
+                   emphstyle={\color{blue}}
+}
+\begin{enumerate}
+\item 
+\begin{enumerate}
+\item 
+    \begin{lstlisting}
+    int age=25;
+    auto func=[age](int val){cout<<(age-val);};
+    \end{lstlisting}
+    
+\item 
+    \begin{lstlisting}
+    double var=12.3;
+    auto func=[&var](double val)
+    {
+        var+=1.0;
+        return ((int)(var+val));
+    };
+    \end{lstlisting}
+\item   4.3\\
+    5.3\\
+    5\\
+    12
+\item The code snippet, given as it is, would give a compilation error. Changing the line 
+    \begin{lstlisting}
+    cout << l(5) <<   << m(5)<<endl ;
+    \end{lstlisting}
+to     \begin{lstlisting}
+    cout << l(5) <<" "<< m(5)<<endl ;
+    \end{lstlisting}
+would solve the compilation error and give the following output: \\
+13\\
+14 13
+
+\item
+\begin{lstlisting}
+    #include <iostream>
+    using namespace std;
+    int main() 
+    {
+        int c=3;
+        auto func=[&]()->int
+        {   
+            ++c; 
+            cout<<c;
+            return 100.2; 
+        };
+        func();
+        return 0;
+    }
+\end{lstlisting}
+    
+\item 4344
+\end{enumerate}
+\item
+\begin{enumerate}
+     \item 
+     \item \begin{lstlisting}
+         /* Solving Tower of Hanoi puzzle using Lambda Expressions */
+
+#include <iostream>
+#include <functional>
+using namespace std;
+
+int main()
+{
+    std::function<void(int,char,char,char)> hanoi;
+    hanoi=[&hanoi](int a,char from,char aux,char to)  {
+        if(a==1){
+           cout<<"\t\tMove disc 1 from "<<from<<" to "<<to<<"\n";
+           return;
+        }
+        else{
+           hanoi(a-1,from,to,aux);
+           cout<<"\t\tMove disc "<<a<<" from "<<from<<" to "<<to<<"\n";
+           hanoi(a-1,aux,from,to);
+        }
+    };
+    cout<<"hanoi(8): "<<endl;
+     hanoi(8,'A','B','C');
+}
+     \end{lstlisting}
+ \end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}
+\grid
+\grid
