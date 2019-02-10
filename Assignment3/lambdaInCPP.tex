@@ -21,8 +21,11 @@
 
 % ========== Begin answering questions here
 
-\lstset{language=C++,                   directivestyle={\color{black}},                   emph={int,char,double,float,unsigned,auto},
-                   emphstyle={\color{blue}}
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                morecomment=[l][\color{magenta}]{\#}
 }
 \begin{enumerate}
 \item 
@@ -30,7 +33,7 @@
 \item 
     \begin{lstlisting}
     int age=25;
-    auto func=[age](int val){cout<<(age-val);};
+    auto func=[age](int val){cout<<(age-val)<<endl;};
     \end{lstlisting}
     
 \item 
@@ -137,6 +140,25 @@ int main()
 }
      \end{lstlisting}
  \end{enumerate}
+\item \begin{enumerate}
+    \item 
+    \begin{alignat*}{1}
+    (\lambda x.x^2 (\lambda x.(x + 1) 2)))\\
+Applicative\:order :\\
+&=> (\lambda x.x^2 (\lambda  ​\underline{x} ​.(x + 1) ​\underline{2} ​)))\\
+&=> (\lambda  ​\underline{x} ​.x^2 ​\underline{3} ​)\\
+&=> 9\\
+\end{alignat*}
+\item 
+\begin{alignat*}{2}
+Normal\:order :\\
+&=> (\lambda  ​\underline{x} ​.x^2 ​\underline{(\lambda x.(x + 1) 2)}) ​)\\
+&=> (\lambda x.(x+1) 2)^2\\
+&=> (\lambda  ​\underline{x} ​.(x+1) ​\underline{2} ​) * (\lambda ​\underline{x} ​.(x+1) ​\underline{2} ​)\\
+&=> 3 * 3\\
+&=> 9
+\end{alignat*}
+\end{enumerate}
 \end{enumerate}
 
 
