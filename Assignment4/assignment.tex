@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\begin{document}
+
+% ========== Edit your name here
+\author{Arkajyoti Pal}
+\title{Principles of Programming Languages: CS40032 \\ Assignment-IV: \textit{Haskell, Scheme and Lisp}}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+\lstset{
+    keywordstyle=\color{blue}
+  , basicstyle=\ttfamily
+  , commentstyle={}
+  , columns=flexible
+  , numbers=left
+  , showstringspaces=false
+  ,                stringstyle=\color{red},
+                commentstyle=\color{magenta},
+                morecomment=[l][\color{magenta}]{\#}
+  } 
+
+\begin{enumerate}
+\item 
+( ((Func1 a) b) ( ((Func 2) 4) 5))
+
+\item 
+\begin{enumerate}
+    \item \textit{Output:} {["tac","god","tna","nep"]}\\
+           \textit{Intermediate steps:} map applies the reverse function to each string in the list and combines the reversed strings into a list which is returned as the output.
+    \item \textit{Output:} {[[1,7],[1,3,5,3,1,5],[5,7],[1,1,3,1,3,3]]}\\
+          \textit{Intermediate steps:} The list  {[1,7,4,8,2]} is added to the front of the list xxs to form a \textit{list of lists}.\\
+          xs takes the value of each list within this list of list one by one, x takes on the values within xs(when x takes on the values within the range {[4..8]}, it is expanded to include the numbers from 4 till and including 8) and the odd numbers are selected to form a list of list which is the output.
+\end{enumerate}
+\item
+\begin{lstlisting}[language=Haskell,numbers=none]
+
+insertElement:: a->[a]->Int->[a]
+insertElement char (x:xs) 0=char:xs
+insertElement char (x:xs) k=x:(insertElement char xs (k-1))
+
+--   Possible function runs are:
+--    insertElement 'k' ['a','c','d','e'] 2 -> "acke"
+--    insertElement "Frenkie" ["Arthur","Busi","Rakitic"] 2 -> ["Arthur","Busi","Frenkie"]
+\end{lstlisting} 
+\item 4
+\item 5
+\item 6
+
+\item 
+\begin{lstlisting}[language=Lisp,numbers=none]
+( defun multiplyList( list-var k)
+         (mapcar #'(lambda(x)(* x k)) list-var ))
+(defvar mylist '(1 2 3 4 5))   ;; Set the list initially
+(defvar k 2)                   ;; Set the multiplying factor
+(print "The initial list is ")
+(write mylist)
+(print " the multiplying factor is ")
+(write k)
+(setf mylist (multiplyList mylist k))    ;; Call the function
+(print "The multiplied list is ")
+(write mylist)
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=Lisp,numbers=none]
+
+(defun fibonacci(n)
+    (if (<= n 1) n (+ (fibonacci (- n 1)) (fibonacci (- n 2)) ) )
+)
+(defvar n 0)
+(terpri)
+(print "Enter the value of n:")
+(terpri)
+(setf n (read))
+(print "The nth Fibonacci number is: ")
+(write (fibonacci n))
+\end{lstlisting}
+
+\end{enumerate}
+
+
+\end{document}
+\grid
+\grid
